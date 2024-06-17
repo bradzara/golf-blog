@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "/blog_post" => "blog_post#index"
+  get "/blog_post/:id" => "blog_post#show"
+  post "/blog_post" => "blog_post#create"
+  patch "/blog_post/:id" => "blog_post#update"
+  delete "/blog_post/:id" => "blog_post#delete"
 end
