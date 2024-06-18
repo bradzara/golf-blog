@@ -28,7 +28,7 @@ class BlogPostsController < ApplicationController
 
   def delete
     @blog_post = BlogPost.find_by(id: params[:id])
-    @blog_post.delete
+    @blog_post.destroy
     render json: {message: "Post has been deleted"}
   end
 end

@@ -10,25 +10,29 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create(
-      title: params[:title],
-      body: params[:body]
+    @comment = Comment.new(
+      body: params[:body],
+      blog_post_id: params[:blog_post_id]
     )
-    render :show
+    if @comment.save
+      render :show 
+    else
+      render json: { ERRORS: @comment.errors.full_messages }
+    end
   end
 
   def update
     @comment = Comment.find_by(id: params[:id])
     @comment.update(
-      title: params[:title] || @comment.title,
-      body: params[:body] || @comment.body
+      body: params[:body] || @comment.body,
+      blog_post_id: params[:blog_post_id] || @comment.blog_post_id
     )
     render :show
   end
 
   def delete
     @comment = Comment.find_by(id: params[:id])
-    @comment.delete
+    @comment.destroy
     render json: {message: "Comment has been deleted"}
   end
 end
