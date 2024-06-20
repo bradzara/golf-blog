@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/blog_posts/:id" => "blog_posts#show"
   post "/blog_posts" => "blog_posts#create"
   patch "/blog_posts/:id" => "blog_posts#update"
-  delete "/blog_posts/:id" => "blog_posts#delete"
+  delete "/blog_posts/:id" => "blog_posts#destroy"
 
   # comment routes
   get "/comments" => "comments#index"
