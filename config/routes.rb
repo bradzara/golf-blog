@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   post "/comments" => "comments#create"
   patch "/comments/:id" => "comments#update"
   delete "/comments/:id" => "comments#destroy"
+
+  # user routes
+  post "/users" => "users#create"
+ 
 end

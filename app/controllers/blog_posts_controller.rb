@@ -10,11 +10,15 @@ class BlogPostsController < ApplicationController
   end
 
   def create
-    @blog_post = BlogPost.create(
+    @blog_post = BlogPost.new(
       title: params[:title],
       body: params[:body]
     )
-    render :show
+    if @blog_post.save
+      render :show
+    else
+      render json: {error: @blog_post.error.full_messages}
+    end
   end
 
   def update
